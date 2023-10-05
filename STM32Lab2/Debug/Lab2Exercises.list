@@ -82,7 +82,7 @@ Disassembly of section .text:
 int Timer1Counter = 0;
 int Timer1Flag = 0;
 
-void SetTimer1 (int duration){
+void SetTimer1(int duration){
  800014c:	b480      	push	{r7}
  800014e:	b083      	sub	sp, #12
  8000150:	af00      	add	r7, sp, #0
@@ -120,7 +120,7 @@ void TimerRun(){
  8000184:	3b01      	subs	r3, #1
  8000186:	4a06      	ldr	r2, [pc, #24]	; (80001a0 <TimerRun+0x2c>)
  8000188:	6013      	str	r3, [r2, #0]
-		if(Timer1Counter <= 0){
+		if (Timer1Counter <= 0){
  800018a:	4b05      	ldr	r3, [pc, #20]	; (80001a0 <TimerRun+0x2c>)
  800018c:	681b      	ldr	r3, [r3, #0]
  800018e:	2b00      	cmp	r3, #0

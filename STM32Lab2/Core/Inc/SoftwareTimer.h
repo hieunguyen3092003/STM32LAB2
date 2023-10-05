@@ -1,7 +1,7 @@
 /*
  * SoftwareTimer.h
  *
- *  Created on: Oct 4, 2023
+ *  Created on: Oct 5, 2023
  *      Author: hieun
  */
 
@@ -9,9 +9,8 @@
 #define INC_SOFTWARETIMER_H_
 
 extern int Timer1Flag;
+void SetTimer1(int duration);
 
-void SetTimer1 (int duration);
 void TimerRun();
-
 
 #endif /* INC_SOFTWARETIMER_H_ */
