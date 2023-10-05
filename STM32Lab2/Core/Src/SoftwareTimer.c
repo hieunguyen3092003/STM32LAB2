@@ -9,13 +9,16 @@
 
 int Timer1Counter = 0;
 int Timer1Flag = 0;
-void Settimer1 (int duration){
+
+void SetTimer1 (int duration){
 	Timer1Counter = duration;
 	Timer1Flag = 0;
 }
 void TimerRun(){
 	if (Timer1Counter > 0){
 		Timer1Counter--;
-		if
+		if(Timer1Counter <= 0){
+			Timer1Flag = 1;
+		}
 	}
 }

@@ -22,7 +22,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "SoftwareTimer.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -94,8 +94,14 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
+  SetTimer1(100);
   while (1)
   {
+	  if(Timer1Flag == 1){
+		  SetTimer1(100);
+		  //TODO
+		  HAL_GPIO_TogglePin(RedLed_GPIO_Port, RedLed_Pin);
+	  }
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
@@ -200,8 +206,8 @@ static void MX_GPIO_Init(void)
   HAL_GPIO_WritePin(RedLed_GPIO_Port, RedLed_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOB, Seg0_Pin|Seg1_Pin|Seg2_Pin|Seg3_Pin
-                          |Seg4_Pin|Seg5_Pin|Seg6_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOB, ALed_Pin|BLed_Pin|CLed_Pin|DLed_Pin
+                          |ELed_Pin|FLed_Pin|GLed_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin : RedLed_Pin */
   GPIO_InitStruct.Pin = RedLed_Pin;
@@ -210,10 +216,10 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(RedLed_GPIO_Port, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : Seg0_Pin Seg1_Pin Seg2_Pin Seg3_Pin
-                           Seg4_Pin Seg5_Pin Seg6_Pin */
-  GPIO_InitStruct.Pin = Seg0_Pin|Seg1_Pin|Seg2_Pin|Seg3_Pin
-                          |Seg4_Pin|Seg5_Pin|Seg6_Pin;
+  /*Configure GPIO pins : ALed_Pin BLed_Pin CLed_Pin DLed_Pin
+                           ELed_Pin FLed_Pin GLed_Pin */
+  GPIO_InitStruct.Pin = ALed_Pin|BLed_Pin|CLed_Pin|DLed_Pin
+                          |ELed_Pin|FLed_Pin|GLed_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
@@ -223,7 +229,7 @@ static void MX_GPIO_Init(void)
 
 /* USER CODE BEGIN 4 */
 	void HAL_TIM_PeriodElapsedCallback	(TIM_HandleTypeDef *htim){
-
+		TimerRun();
 	}
 /* USER CODE END 4 */
 
