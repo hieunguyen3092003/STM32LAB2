@@ -58,22 +58,26 @@ void Error_Handler(void);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
-#define RedLed_Pin GPIO_PIN_5
-#define RedLed_GPIO_Port GPIOA
-#define ALed_Pin GPIO_PIN_0
-#define ALed_GPIO_Port GPIOB
-#define BLed_Pin GPIO_PIN_1
-#define BLed_GPIO_Port GPIOB
-#define CLed_Pin GPIO_PIN_2
-#define CLed_GPIO_Port GPIOB
-#define DLed_Pin GPIO_PIN_3
-#define DLed_GPIO_Port GPIOB
-#define ELed_Pin GPIO_PIN_4
-#define ELed_GPIO_Port GPIOB
-#define FLed_Pin GPIO_PIN_5
-#define FLed_GPIO_Port GPIOB
-#define GLed_Pin GPIO_PIN_6
-#define GLed_GPIO_Port GPIOB
+#define redLed_Pin GPIO_PIN_5
+#define redLed_GPIO_Port GPIOA
+#define EN0_Pin GPIO_PIN_6
+#define EN0_GPIO_Port GPIOA
+#define EN1_Pin GPIO_PIN_7
+#define EN1_GPIO_Port GPIOA
+#define aLed_Pin GPIO_PIN_0
+#define aLed_GPIO_Port GPIOB
+#define bLed_Pin GPIO_PIN_1
+#define bLed_GPIO_Port GPIOB
+#define cLed_Pin GPIO_PIN_2
+#define cLed_GPIO_Port GPIOB
+#define dLed_Pin GPIO_PIN_3
+#define dLed_GPIO_Port GPIOB
+#define eLed_Pin GPIO_PIN_4
+#define eLed_GPIO_Port GPIOB
+#define fLed_Pin GPIO_PIN_5
+#define fLed_GPIO_Port GPIOB
+#define gLed_Pin GPIO_PIN_6
+#define gLed_GPIO_Port GPIOB
 /* USER CODE BEGIN Private defines */
 
 /* USER CODE END Private defines */
