@@ -232,7 +232,6 @@ int main(void)
 				HAL_GPIO_WritePin(gLed_GPIO_Port, gLed_Pin, RESET);
 				break;
 			}
-			seg7Counter++;
 	  }
 //	  if(Timer1Flag == 1){
 //		  SetTimer1(100);
