@@ -14,6 +14,7 @@ void SetTimer1(int duration){
 	Timer1Counter = duration;
 	Timer1Flag = 0;
 }
+
 void TimerRun(){
 	if (Timer1Counter > 0){
 		Timer1Counter--;
