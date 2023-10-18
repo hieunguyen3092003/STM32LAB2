@@ -94,7 +94,7 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  setTimer1(50);
+  setTimer1(100);
   seg7Counter = 0;
   seg7Buffer = 0;
 
@@ -105,10 +105,12 @@ int main(void)
   while (1)
   {
 	  if(timer1Flag == 1){
-		  setTimer1(50);
+		  setTimer1(100);
 		  timer1Flag = 0;
 		  HAL_GPIO_TogglePin(redLed_GPIO_Port, redLed_Pin);
+		  HAL_GPIO_TogglePin(DOT_GPIO_Port, DOT_Pin);
 
+		  // FUNCTION update7SEG
 		  if(index_led >= MAX_LED){
 			  index_led = 0;
 		  }
