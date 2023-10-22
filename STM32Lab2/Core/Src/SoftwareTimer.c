@@ -10,12 +10,12 @@
 int Timer1Counter = 0;
 int Timer1Flag = 0;
 
-void SetTimer1(int duration){
+void setTimer1(int duration){
 	Timer1Counter = duration;
 	Timer1Flag = 0;
 }
 
-void TimerRun(){
+void timerRun(){
 	if (Timer1Counter > 0){
 		Timer1Counter--;
 		if (Timer1Counter <= 0){

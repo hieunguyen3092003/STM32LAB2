@@ -94,11 +94,11 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  SetTimer1(100);
+  setTimer1(100);
   while (1)
   {
 	  if(Timer1Flag == 1){
-		  SetTimer1(100);
+		  setTimer1(100);
 		  //TODO
 		  HAL_GPIO_TogglePin(RedLed_GPIO_Port, RedLed_Pin);
 	  }
