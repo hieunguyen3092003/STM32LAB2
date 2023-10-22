@@ -9,10 +9,16 @@
 #define INC_SOFTWARETIMER_H_
 
 extern int timer1Flag;
-extern int seg7Counter;
-extern int seg7Buffer;
+//Ex1
+extern int sevenSegBuffer;
+extern int sevenSegFlag;
 
+//example
 void setTimer1(int duration);
 void timerRun();
+
+//ex1 function
+void sevenSegSetTimer(int duration);
+void sevenSegRun();
 
 #endif /* INC_SOFTWARETIMER_H_ */

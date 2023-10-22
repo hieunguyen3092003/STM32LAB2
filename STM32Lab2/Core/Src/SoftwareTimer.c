@@ -9,8 +9,11 @@
 
 int timer1Flag = 0;
 int timer1Counter = 0;
-int seg7Counter;
-int seg7Buffer;
+
+//Ex1
+int sevenSegFlag = 0;
+int sevenSegBuffer = 0;
+int sevenSegCounter = 0;
 
 void setTimer1(int duration){
 	timer1Counter = duration;
@@ -25,3 +28,18 @@ void timerRun(){
 		}
 	}
 }
+//Ex1 function
+void sevenSegSetTimer(int duration){
+	sevenSegCounter = duration;
+	sevenSegFlag = 1;
+}
+
+void sevenSegRun(){
+	if(sevenSegCounter > 0) {
+		sevenSegCounter--;
+		if(sevenSegCounter <= 0){
+			sevenSegFlag = 1;
+		}
+	}
+}
+
