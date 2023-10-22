@@ -8,19 +8,35 @@
 #include <SoftwareTimer.h>
 
 int Timer1Counter = 0;
-int Timer1Flag = 0;
+int timer1Flag = 0;
 
-void SetTimer1(int duration){
+void setTimer1(int duration){
 	Timer1Counter = duration;
-	Timer1Flag = 0;
+	timer1Flag = 0;
 }
 
-void TimerRun(){
+void timerRun(){
 	if (Timer1Counter > 0){
 		Timer1Counter--;
 		if (Timer1Counter <= 0){
-			Timer1Flag = 1;
+			timer1Flag = 1;
 		}
 	}
 }
+// ex2
+int timer2Counter = 0;
+int timer2Flag = 0;
 
+void setTimer2(int duration){
+	timer2Counter = duration;
+	timer2Flag = 0;
+}
+
+void timerRun2(){
+	if (timer2Counter > 0){
+		timer2Counter--;
+		if (timer2Counter <= 0){
+			timer2Flag = 1;
+		}
+	}
+}

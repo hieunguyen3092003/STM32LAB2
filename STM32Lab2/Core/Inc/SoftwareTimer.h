@@ -8,9 +8,15 @@
 #ifndef INC_SOFTWARETIMER_H_
 #define INC_SOFTWARETIMER_H_
 
-extern int Timer1Flag;
-void SetTimer1(int duration);
+extern int timer1Flag;
+void setTimer1(int duration);
 
-void TimerRun();
+void timerRun();
+
+//ex2
+extern int timer2Flag;
+void setTimer2(int duration);
+
+void timerRun2();
 
 #endif /* INC_SOFTWARETIMER_H_ */
