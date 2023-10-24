@@ -96,7 +96,7 @@ int main(void)
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   setTimer1(100);
-  setTimer2(50);
+  setTimer2(25);
   while (1)
   {
 	  // example led blinky
@@ -109,7 +109,7 @@ int main(void)
 
 	  //ex 3
 	  if(timer2Flag == 1){
-		  setTimer2(50);
+		  setTimer2(25);
 		  timer2Flag = 0;
 		  if (index_led >= MAX_LED){
 			  index_led = 0;

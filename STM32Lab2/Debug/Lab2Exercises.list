@@ -254,8 +254,8 @@ int main(void)
   setTimer1(100);
  8000228:	2064      	movs	r0, #100	; 0x64
  800022a:	f7ff ff8f 	bl	800014c <setTimer1>
-  setTimer2(50);
- 800022e:	2032      	movs	r0, #50	; 0x32
+  setTimer2(25);
+ 800022e:	2019      	movs	r0, #25
  8000230:	f7ff ffba 	bl	80001a8 <setTimer2>
   while (1)
   {
@@ -285,8 +285,8 @@ int main(void)
  8000254:	681b      	ldr	r3, [r3, #0]
  8000256:	2b01      	cmp	r3, #1
  8000258:	d1ec      	bne.n	8000234 <main+0x30>
-		  setTimer2(50);
- 800025a:	2032      	movs	r0, #50	; 0x32
+		  setTimer2(25);
+ 800025a:	2019      	movs	r0, #25
  800025c:	f7ff ffa4 	bl	80001a8 <setTimer2>
 		  timer2Flag = 0;
  8000260:	4b0a      	ldr	r3, [pc, #40]	; (800028c <main+0x88>)
