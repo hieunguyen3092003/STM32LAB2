@@ -107,7 +107,7 @@ int main(void)
 		  HAL_GPIO_TogglePin(DOT_GPIO_Port, DOT_Pin);
 	  }
 
-	  //ex 3
+	  //ex 4
 	  if(timer2Flag == 1){
 		  setTimer2(25);
 		  timer2Flag = 0;
@@ -247,6 +247,7 @@ static void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
+// ex4
 int led_buffer[4] = {1, 2, 3, 4};
 void update7SEG(int index){
     switch (index){
