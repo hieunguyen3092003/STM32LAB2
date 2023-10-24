@@ -24,7 +24,7 @@ void timerRun(){
 	}
 }
 
-// ex 3
+// ex 4
 int timer2Counter = 0;
 int timer2Flag = 0;
 
