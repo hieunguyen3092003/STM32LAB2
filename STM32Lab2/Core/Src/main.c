@@ -104,6 +104,7 @@ int main(void)
 		  setTimer1(100);
 		  //TODO
 		  HAL_GPIO_TogglePin(redLed_GPIO_Port, redLed_Pin);
+		  HAL_GPIO_TogglePin(DOT_GPIO_Port, DOT_Pin);
 	  }
 
 	  //ex 3
@@ -115,6 +116,8 @@ int main(void)
 		  }
 		  update7SEG(index_led++);
 	  }
+
+
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
