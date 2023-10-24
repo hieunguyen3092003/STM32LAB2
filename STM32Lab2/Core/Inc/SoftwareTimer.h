@@ -13,4 +13,7 @@ void setTimer1(int duration);
 
 void timerRun();
 
+extern timer2Flag;
+void setTimer2(int duration);
+void timerRun2();
 #endif /* INC_SOFTWARETIMER_H_ */

@@ -24,3 +24,19 @@ void timerRun(){
 	}
 }
 
+// ex 3
+int timer2Counter = 0;
+int timer2Flag = 0;
+
+void setTimer2(int duration){
+	timer2Counter = duration;
+	timer2Flag = 1;
+}
+void timerRun2(){
+	if (timer2Counter > 0){
+		timer2Counter--;
+		if (timer2Counter <= 0){
+			timer2Flag = 1;
+		}
+	}
+}
