@@ -133,7 +133,15 @@ int main(void)
 			  HAL_GPIO_WritePin(EN3_GPIO_Port, EN3_Pin, RESET);
 			  sevenSegDisplay(0);
 		  }
+
 	  }
+//	  if(Timer1Flag == 1){
+//		  SetTimer1(100);
+//
+//		  HAL_GPIO_TogglePin(RedLed_GPIO_Port, RedLed_Pin);
+//
+//	  }
+
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */

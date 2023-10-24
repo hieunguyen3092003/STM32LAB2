@@ -371,6 +371,7 @@ int main(void)
  80002fa:	f000 f8e7 	bl	80004cc <sevenSegDisplay>
  80002fe:	e79a      	b.n	8000236 <main+0x32>
 		  }
+
 	  }
  8000300:	bf00      	nop
 	  if(timer1Flag == 1){
