@@ -96,7 +96,8 @@ int main(void)
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   setTimer1(100);
-  setTimer2(25);
+  setTimer2(100);
+
   while (1)
   {
 	  // example led blinky
@@ -109,12 +110,27 @@ int main(void)
 
 	  //ex 4
 	  if(timer2Flag == 1){
-		  setTimer2(25);
+		  setTimer2(100);
 		  timer2Flag = 0;
 		  if (index_led >= MAX_LED){
 			  index_led = 0;
 		  }
+		  updateClockBuffer();
 		  update7SEG(index_led++);
+		  //ex5
+		  second++;
+		  if (second >= 60){
+			  second = 0;
+			  minute++;
+		  	  }
+		  if(minute >= 60){
+			  minute = 0;
+			  hour++;
+		   	  }
+		  if(hour >=24){
+			  hour = 0;
+		  	  }
+		  updateClockBuffer();
 	  }
 
 
@@ -249,6 +265,24 @@ static void MX_GPIO_Init(void)
 /* USER CODE BEGIN 4 */
 // ex4
 int led_buffer[4] = {1, 2, 3, 4};
+void updateClockBuffer(){
+	if(hour >= 10){
+		led_buffer[0] = hour / 10;
+		led_buffer[1] = hour % 10;
+	}
+	else if(hour < 10){
+		led_buffer[0] = 0;
+		led_buffer[1] = hour;
+	}
+	if(minute >= 10){
+		led_buffer[2] = minute/10;
+		led_buffer[3] = minute % 10;
+	}
+	else if(minute < 10){
+		led_buffer[2]= 0;
+		led_buffer[3] = minute;
+	}
+}
 void update7SEG(int index){
     switch (index){
         case 0:

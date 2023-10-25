@@ -7,6 +7,8 @@
 
 #ifndef INC_SOFTWARETIMER_H_
 #define INC_SOFTWARETIMER_H_
+//extern ex5 variables
+extern int hour, minute, second;
 
 extern int timer1Flag;
 void setTimer1(int duration);

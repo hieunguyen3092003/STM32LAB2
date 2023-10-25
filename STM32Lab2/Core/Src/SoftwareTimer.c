@@ -9,7 +9,9 @@
 
 int timer1Counter = 0;
 int timer1Flag = 0;
-
+//ex5 variables
+int hour = 15, minute = 8, second = 50;
+//ex5 variables
 void setTimer1(int duration){
 	timer1Counter = duration;
 	timer1Flag = 0;
