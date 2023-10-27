@@ -42,3 +42,20 @@ void timerRun2(){
 		}
 	}
 }
+
+//EX9
+int timer3Counter = 0;
+int timer3Flag = 0;
+
+void setTimer3(int duration){
+	timer3Counter = duration;
+	timer3Flag = 1;
+}
+void timerRun3(){
+	if (timer3Counter > 0){
+		timer3Counter--;
+		if (timer3Counter <= 0){
+			timer3Flag = 1;
+		}
+	}
+}

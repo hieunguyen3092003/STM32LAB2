@@ -115,6 +115,7 @@ int main(void)
 		  if (index_led >= MAX_LED){
 			  index_led = 0;
 		  }
+
 		  updateClockBuffer();
 		  update7SEG(index_led++);
 		  //ex5
@@ -283,6 +284,7 @@ void updateClockBuffer(){
 		led_buffer[3] = minute;
 	}
 }
+
 void update7SEG(int index){
     switch (index){
         case 0:
