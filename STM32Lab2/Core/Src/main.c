@@ -146,6 +146,7 @@ int main(void)
 		  if(index_led_matrix >= MAX_LED_MATRIX){
 			  index_led_matrix = 0;
 		  }
+//		  HAL_GPIO_TogglePin(GPIOA, ENM0_Pin | ENM1_Pin | ENM2_Pin | ENM3_Pin  );
 		  updateLEDMatrix(index_led_matrix++);
 	  }
 
@@ -348,7 +349,7 @@ void sevenSegDisplay(int num){
 }
 
 //ex9:
-uint8_t matrix_buffer[8] = {0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08};
+uint8_t matrix_buffer[8] = {0x0100, 0x0200, 0x0300, 0x0400, 0x0500, 0x0600, 0x0700, 0x0800};
 void updateLEDMatrix(int index){
     switch (index){
         case 0:
@@ -381,8 +382,8 @@ void updateLEDMatrix(int index){
 }
 
 	void HAL_TIM_PeriodElapsedCallback	(TIM_HandleTypeDef *htim){
-		timerRun();
-		timerRun2();
+//		timerRun();
+//		timerRun2();
 		timerRun3();
 	}
 /* USER CODE END 4 */
