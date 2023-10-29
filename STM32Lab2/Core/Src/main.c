@@ -68,6 +68,11 @@ int main(void)
   /* USER CODE BEGIN 1 */
 	const int MAX_LED = 4;
 	int index_led = 0;
+
+	//ex9:
+	const int MAX_LED_MATRIX = 8;
+	int index_led_matrix = 0;
+
   /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/
@@ -97,7 +102,7 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   setTimer1(100);
   setTimer2(100);
-
+  setTimer3(100);
   while (1)
   {
 	  // example led blinky
@@ -131,9 +136,18 @@ int main(void)
 		  if(hour >=24){
 			  hour = 0;
 		  	  }
-		  updateClockBuffer();
+//		  updateClockBuffer();
 	  }
 
+	  //ex9:
+	  if(timer3Flag == 1){
+		  setTimer3(100);
+		  timer3Flag = 0;
+		  if(index_led_matrix >= MAX_LED_MATRIX){
+			  index_led_matrix = 0;
+		  }
+		  updateLEDMatrix(index_led_matrix++);
+	  }
 
     /* USER CODE END WHILE */
 
@@ -236,26 +250,38 @@ static void MX_GPIO_Init(void)
   __HAL_RCC_GPIOB_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOA, DOT_Pin|redLed_Pin|EN0_Pin|EN1_Pin
-                          |EN2_Pin|EN3_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOA, ENM0_Pin|ENM1_Pin|DOT_Pin|redLed_Pin
+                          |EN0_Pin|EN1_Pin|EN2_Pin|EN3_Pin
+                          |ENM2_Pin|ENM3_Pin|ENM4_Pin|ENM5_Pin
+                          |ENM6_Pin|ENM7_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOB, aLed_Pin|bLed_Pin|cLed_Pin|dLed_Pin
-                          |eLed_Pin|fLed_Pin|gLed_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOB, aLed_Pin|bLed_Pin|cLed_Pin|ROW2_Pin
+                          |ROW3_Pin|ROW4_Pin|ROW5_Pin|ROW6_Pin
+                          |ROW7_Pin|dLed_Pin|eLed_Pin|fLed_Pin
+                          |gLed_Pin|ROW0_Pin|ROW1_Pin, GPIO_PIN_RESET);
 
-  /*Configure GPIO pins : DOT_Pin redLed_Pin EN0_Pin EN1_Pin
-                           EN2_Pin EN3_Pin */
-  GPIO_InitStruct.Pin = DOT_Pin|redLed_Pin|EN0_Pin|EN1_Pin
-                          |EN2_Pin|EN3_Pin;
+  /*Configure GPIO pins : ENM0_Pin ENM1_Pin DOT_Pin redLed_Pin
+                           EN0_Pin EN1_Pin EN2_Pin EN3_Pin
+                           ENM2_Pin ENM3_Pin ENM4_Pin ENM5_Pin
+                           ENM6_Pin ENM7_Pin */
+  GPIO_InitStruct.Pin = ENM0_Pin|ENM1_Pin|DOT_Pin|redLed_Pin
+                          |EN0_Pin|EN1_Pin|EN2_Pin|EN3_Pin
+                          |ENM2_Pin|ENM3_Pin|ENM4_Pin|ENM5_Pin
+                          |ENM6_Pin|ENM7_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : aLed_Pin bLed_Pin cLed_Pin dLed_Pin
-                           eLed_Pin fLed_Pin gLed_Pin */
-  GPIO_InitStruct.Pin = aLed_Pin|bLed_Pin|cLed_Pin|dLed_Pin
-                          |eLed_Pin|fLed_Pin|gLed_Pin;
+  /*Configure GPIO pins : aLed_Pin bLed_Pin cLed_Pin ROW2_Pin
+                           ROW3_Pin ROW4_Pin ROW5_Pin ROW6_Pin
+                           ROW7_Pin dLed_Pin eLed_Pin fLed_Pin
+                           gLed_Pin ROW0_Pin ROW1_Pin */
+  GPIO_InitStruct.Pin = aLed_Pin|bLed_Pin|cLed_Pin|ROW2_Pin
+                          |ROW3_Pin|ROW4_Pin|ROW5_Pin|ROW6_Pin
+                          |ROW7_Pin|dLed_Pin|eLed_Pin|fLed_Pin
+                          |gLed_Pin|ROW0_Pin|ROW1_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
@@ -321,9 +347,43 @@ void sevenSegDisplay(int num){
 	GPIOB->ODR = ~LED7SEG[num];
 }
 
+//ex9:
+uint8_t matrix_buffer[8] = {0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08};
+void updateLEDMatrix(int index){
+    switch (index){
+        case 0:
+        	GPIOB->ODR = ~matrix_buffer[index];
+            break;
+        case 1:
+        	GPIOB->ODR = ~matrix_buffer[index];
+            break;
+        case 2:
+        	GPIOB->ODR = ~matrix_buffer[index];
+            break;
+        case 3:
+        	GPIOB->ODR = ~matrix_buffer[index];
+            break;
+        case 4:
+        	GPIOB->ODR = ~matrix_buffer[index];
+            break;
+        case 5:
+        	GPIOB->ODR = ~matrix_buffer[index];
+            break;
+        case 6:
+        	GPIOB->ODR = ~matrix_buffer[index];
+            break;
+        case 7:
+        	GPIOB->ODR = ~matrix_buffer[index];
+            break;
+        default:
+            break;
+    }
+}
+
 	void HAL_TIM_PeriodElapsedCallback	(TIM_HandleTypeDef *htim){
 		timerRun();
 		timerRun2();
+		timerRun3();
 	}
 /* USER CODE END 4 */
 

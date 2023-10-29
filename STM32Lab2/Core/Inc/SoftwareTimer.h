@@ -18,4 +18,10 @@ void timerRun();
 extern timer2Flag;
 void setTimer2(int duration);
 void timerRun2();
+
+//ex9:
+extern int timer3Flag;
+void setTimer3(int duration);
+void timerRun3();
+
 #endif /* INC_SOFTWARETIMER_H_ */
