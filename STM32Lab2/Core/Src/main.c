@@ -101,7 +101,7 @@ int main(void)
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   setTimer1(100);
-  setTimer2(100);
+//  setTimer2(100);
   setTimer3(100);
   while (1)
   {
@@ -143,11 +143,14 @@ int main(void)
 	  if(timer3Flag == 1){
 		  setTimer3(100);
 		  timer3Flag = 0;
+		  HAL_GPIO_WritePin(GPIOA, ENM0_Pin|ENM1_Pin
+		                        |ENM2_Pin|ENM3_Pin|ENM4_Pin|ENM5_Pin
+								|ENM6_Pin|ENM7_Pin, GPIO_PIN_RESET);
 		  if(index_led_matrix >= MAX_LED_MATRIX){
 			  index_led_matrix = 0;
 		  }
-//		  HAL_GPIO_TogglePin(GPIOA, ENM0_Pin | ENM1_Pin | ENM2_Pin | ENM3_Pin  );
-		  updateLEDMatrix(index_led_matrix++);
+		  updateLEDMatrix(index_led_matrix);
+		  matrixLedDisplay(index_led_matrix++);
 	  }
 
     /* USER CODE END WHILE */
@@ -344,45 +347,52 @@ void update7SEG(int index){
 }
 // display 7 led segment func
 void sevenSegDisplay(int num){
-	uint16_t LED7SEG[10] = {0x003F, 0x0006, 0x005B, 0x004F, 0x0066, 0x006D, 0x007D, 0x0007, 0x007F, 0x006F};
+	uint8_t LED7SEG[10] = {0x3F, 0x06, 0x5B, 0x4F, 0x66, 0x6D, 0x7D, 0x07, 0x7F, 0x6F};
 	GPIOB->ODR = ~LED7SEG[num];
 }
 
 //ex9:
-uint8_t matrix_buffer[8] = {0x0100, 0x0200, 0x0300, 0x0400, 0x0500, 0x0600, 0x0700, 0x0800};
-void updateLEDMatrix(int index){
+uint16_t matrix_buffer[8] = {0x0100, 0x0200, 0x0400, 0x0800, 0x1000, 0x2000, 0x4000, 0x8000};
+
+void updateLEDMatrix (int index){
+	HAL_GPIO_WritePin(GPIOA, ENM0_Pin|ENM1_Pin|ENM2_Pin|ENM3_Pin|ENM4_Pin|ENM5_Pin
+	                          |ENM6_Pin|ENM7_Pin, GPIO_PIN_SET);
     switch (index){
-        case 0:
-        	GPIOB->ODR = ~matrix_buffer[index];
+    case 0:
+    		HAL_GPIO_WritePin(GPIOA,ENM3_Pin|ENM4_Pin, GPIO_PIN_RESET);
             break;
         case 1:
-        	GPIOB->ODR = ~matrix_buffer[index];
+        	HAL_GPIO_WritePin(GPIOA,ENM2_Pin|ENM3_Pin|ENM4_Pin|ENM5_Pin, GPIO_PIN_RESET);
             break;
         case 2:
-        	GPIOB->ODR = ~matrix_buffer[index];
+        	HAL_GPIO_WritePin(GPIOA,ENM1_Pin|ENM2_Pin|ENM5_Pin|ENM6_Pin, GPIO_PIN_RESET);
             break;
         case 3:
-        	GPIOB->ODR = ~matrix_buffer[index];
+        	HAL_GPIO_WritePin(GPIOA,ENM1_Pin|ENM2_Pin|ENM5_Pin|ENM6_Pin, GPIO_PIN_RESET);
             break;
         case 4:
-        	GPIOB->ODR = ~matrix_buffer[index];
+        	HAL_GPIO_WritePin(GPIOA,ENM1_Pin|ENM2_Pin|ENM3_Pin|ENM4_Pin|ENM5_Pin|ENM6_Pin, GPIO_PIN_RESET);
             break;
         case 5:
-        	GPIOB->ODR = ~matrix_buffer[index];
-            break;
+        	HAL_GPIO_WritePin(GPIOA,ENM1_Pin|ENM2_Pin|ENM3_Pin|ENM4_Pin|ENM5_Pin|ENM6_Pin, GPIO_PIN_RESET);
+             break;
         case 6:
-        	GPIOB->ODR = ~matrix_buffer[index];
-            break;
+        	HAL_GPIO_WritePin(GPIOA,ENM1_Pin|ENM2_Pin|ENM5_Pin|ENM6_Pin, GPIO_PIN_RESET);
+             break;
         case 7:
-        	GPIOB->ODR = ~matrix_buffer[index];
-            break;
+        	HAL_GPIO_WritePin(GPIOA,ENM1_Pin|ENM2_Pin|ENM5_Pin|ENM6_Pin, GPIO_PIN_RESET);
+             break;
         default:
             break;
     }
 }
 
+void matrixLedDisplay(int num){
+//	uint16_t matrix_buffer[8] = {0x0100, 0x0200, 0x0400, 0x0800, 0x1000, 0x2000, 0x4000, 0x8000};
+	GPIOB -> ODR = ~matrix_buffer[num];
+}
 	void HAL_TIM_PeriodElapsedCallback	(TIM_HandleTypeDef *htim){
-//		timerRun();
+		timerRun();
 //		timerRun2();
 		timerRun3();
 	}
