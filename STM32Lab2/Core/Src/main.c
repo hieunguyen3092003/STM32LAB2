@@ -150,7 +150,7 @@ int main(void)
 			  index_led_matrix = 0;
 		  }
 		  updateLEDMatrix(index_led_matrix);
-		  matrixLedDisplay(index_led_matrix++);
+		  matrixLedScanRow(index_led_matrix++);
 	  }
 
     /* USER CODE END WHILE */
@@ -387,7 +387,7 @@ void updateLEDMatrix (int index){
     }
 }
 
-void matrixLedDisplay(int num){
+void matrixLedScanRow(int num){
 //	uint16_t matrix_buffer[8] = {0x0100, 0x0200, 0x0400, 0x0800, 0x1000, 0x2000, 0x4000, 0x8000};
 	GPIOB -> ODR = ~matrix_buffer[num];
 }

@@ -2240,9 +2240,9 @@ LOAD c:/st/stm32cubeide_1.7.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.exte
  .text.updateLEDMatrix
                 0x00000000080006d4       0xc0 ./Core/Src/main.o
                 0x00000000080006d4                updateLEDMatrix
- .text.matrixLedDisplay
+ .text.matrixLedScanRow
                 0x0000000008000794       0x28 ./Core/Src/main.o
-                0x0000000008000794                matrixLedDisplay
+                0x0000000008000794                matrixLedScanRow
  .text.HAL_TIM_PeriodElapsedCallback
                 0x00000000080007bc       0x18 ./Core/Src/main.o
                 0x00000000080007bc                HAL_TIM_PeriodElapsedCallback

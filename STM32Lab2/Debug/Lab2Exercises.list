@@ -432,12 +432,12 @@ int main(void)
 		  updateLEDMatrix(index_led_matrix);
  8000326:	68b8      	ldr	r0, [r7, #8]
  8000328:	f000 f9d4 	bl	80006d4 <updateLEDMatrix>
-		  matrixLedDisplay(index_led_matrix++);
+		  matrixLedScanRow(index_led_matrix++);
  800032c:	68bb      	ldr	r3, [r7, #8]
  800032e:	1c5a      	adds	r2, r3, #1
  8000330:	60ba      	str	r2, [r7, #8]
  8000332:	4618      	mov	r0, r3
- 8000334:	f000 fa2e 	bl	8000794 <matrixLedDisplay>
+ 8000334:	f000 fa2e 	bl	8000794 <matrixLedScanRow>
 	  if(timer1Flag == 1){
  8000338:	e794      	b.n	8000264 <main+0x38>
  800033a:	bf00      	nop
@@ -1125,20 +1125,20 @@ void updateLEDMatrix (int index){
  800078e:	bf00      	nop
  8000790:	40010800 	.word	0x40010800
 
-08000794 <matrixLedDisplay>:
+08000794 <matrixLedScanRow>:
 
-void matrixLedDisplay(int num){
+void matrixLedScanRow(int num){
  8000794:	b480      	push	{r7}
  8000796:	b083      	sub	sp, #12
  8000798:	af00      	add	r7, sp, #0
  800079a:	6078      	str	r0, [r7, #4]
 //	uint16_t matrix_buffer[8] = {0x0100, 0x0200, 0x0400, 0x0800, 0x1000, 0x2000, 0x4000, 0x8000};
 	GPIOB -> ODR = ~matrix_buffer[num];
- 800079c:	4a05      	ldr	r2, [pc, #20]	; (80007b4 <matrixLedDisplay+0x20>)
+ 800079c:	4a05      	ldr	r2, [pc, #20]	; (80007b4 <matrixLedScanRow+0x20>)
  800079e:	687b      	ldr	r3, [r7, #4]
  80007a0:	f832 3013 	ldrh.w	r3, [r2, r3, lsl #1]
  80007a4:	43da      	mvns	r2, r3
- 80007a6:	4b04      	ldr	r3, [pc, #16]	; (80007b8 <matrixLedDisplay+0x24>)
+ 80007a6:	4b04      	ldr	r3, [pc, #16]	; (80007b8 <matrixLedScanRow+0x24>)
  80007a8:	60da      	str	r2, [r3, #12]
 }
  80007aa:	bf00      	nop
