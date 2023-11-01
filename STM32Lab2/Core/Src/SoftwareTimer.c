@@ -12,7 +12,7 @@ int timer1Flag = 0;
 
 void setTimer1(int duration){
 	timer1Counter = duration;
-	timer1Flag = 0;
+	timer1Flag = 1;
 }
 
 void timerRun(){
