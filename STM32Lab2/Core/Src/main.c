@@ -96,6 +96,7 @@ int main(void)
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   setTimer1(100);
+//  setTimer2(500);
   int count = 0;
   while (1)
   {
@@ -104,11 +105,13 @@ int main(void)
 		  timer1Flag = 0;
 		  //TODO
 		  if(count >= 8){
+			  matrixShiftLeft();
 			  count = 0;
 		  }
-		  matrixDisplayCol(count);
-		  matrixLedScanROW(count++);
+		  matrixDisplayRow(count);
+		  matrixLedScanCol(count++);
 	  }
+
 
     /* USER CODE END WHILE */
 
@@ -239,17 +242,34 @@ static void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
-uint8_t matrixLedRow[8] = {0x01, 0x02, 0x04, 0x08, 0x10, 0x20, 0x40, 0x80};
-void matrixLedScanROW(int num){
-	GPIOB -> ODR = ~matrixLedRow[num];
+uint8_t matrixLedCol[8] = {0x01, 0x02, 0x04, 0x08, 0x10, 0x20, 0x40, 0x80};
+void matrixLedScanCol(int num){
+	GPIOA -> ODR = ~matrixLedCol[num];
 }
 
-uint8_t matrixLedColDisplayA[8] = {0x18, 0x3C, 0x66, 0x66, 0x7E, 0x7E, 0x66, 0x66};
-void matrixDisplayCol(int num){
-	GPIOA -> ODR = ~matrixLedColDisplayA[num];
+uint8_t matrixLedRowDisplayA[8] = {0x00, 0xFC, 0xFE, 0x11, 0x11, 0xFE, 0xFC, 0x00};
+void matrixDisplayRow(int num){
+	GPIOB -> ODR = ~matrixLedRowDisplayA[num];
 }
+
+//unit8_t matrixLedRowShifted[8] = matrixLedRowDisplayA[8];
+void matrixShiftLeft(){
+
+		matrixLedRowDisplayA[0] = matrixLedRowDisplayA[1];
+		matrixLedRowDisplayA[1] = matrixLedRowDisplayA[2];
+		matrixLedRowDisplayA[2] = matrixLedRowDisplayA[3];
+		matrixLedRowDisplayA[3] = matrixLedRowDisplayA[4];
+		matrixLedRowDisplayA[4] = matrixLedRowDisplayA[5];
+		matrixLedRowDisplayA[5] = matrixLedRowDisplayA[6];
+		matrixLedRowDisplayA[6] = matrixLedRowDisplayA[7];
+		matrixLedRowDisplayA[7] = matrixLedRowDisplayA[0];
+
+
+}
+
 	void HAL_TIM_PeriodElapsedCallback	(TIM_HandleTypeDef *htim){
 		timerRun();
+		timerRun2();
 	}
 
 /* USER CODE END 4 */
